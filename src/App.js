@@ -14,7 +14,7 @@ class App extends Component {
   }
   render(){
     return(
-      <main>
+      <main className='App'>
         <Header />
         <MovieContainer movies={this.state.movies} />
         <Footer />

@@ -3,7 +3,9 @@ import './Footer.css';
 
 const Footer = () => {
     return(
-        <h1>by Cami Anderson & Lourdes Benites</h1>
+        <footer>
+            <h1 className='footer'>by Cami Anderson & Lourdes Benites</h1>
+        </footer>
     )
 }
 
