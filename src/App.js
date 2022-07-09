@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import MovieContainer from './MovieContainer';
@@ -9,17 +9,23 @@ class App extends Component {
   constructor(){
     super();
     this.state = { 
-      movies: movieData.movies
+      movies: movieData.movies,
+      isClicked: false
     }
   }
+  selectedMovie = (id) => {
+    const findMovie = this.state.movies.find(movie => movie.id === id);
+    console.log(findMovie)
+  }
+ 
   render(){
     return(
       <main className='App'>
         <Header />
-        <MovieContainer movies={this.state.movies} />
+        { !this.state.isClicked && <MovieContainer movies={this.state.movies} selectedMovie={this.selectedMovie}/> }
         <Footer />
       </main>
-     )
+     )  
   }
 }
 
