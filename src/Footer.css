@@ -2,8 +2,10 @@ footer {
     background: #000;
     color: #fff;
     display: flex;
+    justify-content:center;
 }
 
 .footer {
+    padding: 10px;
     font-size: 15px;
 }

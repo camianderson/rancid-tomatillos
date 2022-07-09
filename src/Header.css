@@ -1,9 +1,11 @@
 header {
-  background-color: #282c34;
+  background-color: red;
   color: #fff;
-  height: 10vh;
+  /* height: 10vh; */
+  /* width: 100vh; */
 }
 .title {
+
     padding: 20px;
     font-size: 45px;
 }
