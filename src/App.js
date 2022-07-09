@@ -19,13 +19,17 @@ class App extends Component {
     const findMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({...this.state.movies, isClicked: true, selectedMovie: findMovie})
   }
+
+  backButton = () => {
+    this.setState({isClicked:false});
+  }
  
   render(){
     return(
       <main className='App'>
         <Header />
         { !this.state.isClicked && <MovieContainer movies={this.state.movies} selectedMovie={this.selectedMovie}/> }
-        { this.state.isClicked && <MovieDetails selectedMovie={this.state.selectedMovie}/> }
+        { this.state.isClicked && <MovieDetails selectedMovie={this.state.selectedMovie} backButton={this.backButton}/> }
         <Footer />
       </main>
      )  
