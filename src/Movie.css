@@ -1,0 +1,15 @@
+.single-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    width: 18em;
+    border-radius: 1vh;
+    overflow: hidden;
+}
+
+p {
+    margin-top: 8px;
+    color: #fff;
+}
