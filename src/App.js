@@ -1,15 +1,16 @@
- import React, {Component} from 'react';
+import React, {Component} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import MovieContainer from './MovieContainer';
-import './App.css';
 import MovieDetails from './MovieDetails';
+import './App.css';
 
 class App extends Component {
   constructor(){
     super();
     this.state = { 
       movies: [],
+      error:'',
       isClicked: false,
       selectedMovie: {}
     }
@@ -17,12 +18,19 @@ class App extends Component {
 
   componentDidMount = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => response.json())
+    .then(response => {
+      if(!response.ok){
+        throw new Error('Oops, something went wrong!')
+      } else {
+       return response.json()
+      }
+    })
     .then(data => {
-      console.log(data)
       this.setState({movies: data.movies})
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      this.setState({error: error.message})
+    })
   }
 
   selectedMovie = (id) => {
@@ -38,6 +46,7 @@ class App extends Component {
     return(
       <main className='App'>
         <Header />
+        { this.state.error && <h2>{this.state.error}</h2>}
         { !this.state.isClicked && <MovieContainer movies={this.state.movies} selectedMovie={this.selectedMovie}/> }
         { this.state.isClicked && <MovieDetails selectedMovie={this.state.selectedMovie} backButton={this.backButton}/> }
         <Footer />
