@@ -2,7 +2,6 @@
 import Header from './Header';
 import Footer from './Footer';
 import MovieContainer from './MovieContainer';
-import movieData from './movieData';
 import './App.css';
 import MovieDetails from './MovieDetails';
 
@@ -10,11 +9,22 @@ class App extends Component {
   constructor(){
     super();
     this.state = { 
-      movies: movieData.movies,
+      movies: [],
       isClicked: false,
       selectedMovie: {}
     }
   }
+
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      this.setState({movies: data.movies})
+    })
+    .catch(error => console.log(error))
+  }
+
   selectedMovie = (id) => {
     const findMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({...this.state.movies, isClicked: true, selectedMovie: findMovie})
