@@ -5,6 +5,7 @@ import MovieContainer from './MovieContainer';
 import MovieDetails from './MovieDetails';
 import './App.css';
 import { Route } from 'react-router-dom';
+import {getMovieData }from './apiCalls'
 
 class App extends Component {
   constructor(){
@@ -18,14 +19,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => {
-      if(!response.ok){
-        throw new Error('Oops, something went wrong!')
-      } else {
-       return response.json()
-      }
-    })
+    getMovieData()
     .then(data => {
       this.setState({movies: data.movies})
     })
