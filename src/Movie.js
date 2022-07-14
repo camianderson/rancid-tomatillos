@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Movie.css'
 
 
 const Movie = ({title, img, id, selectedMovie}) => {
     return (
-        <div className='single-movie' id={id} onClick={() => selectedMovie(id)}>
-            <img src={img} />
-            <p>{title}</p>
-        </div>
+        <Link to={`/movies/${id}`}>
+            <div className='single-movie' id={id} onClick={() => selectedMovie(id)}>
+                <img src={img} />
+                <p>{title}</p>
+            </div>
+        </Link>
     )
 }
 
