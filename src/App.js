@@ -47,7 +47,7 @@ class App extends Component {
           exact path='/movies/:id'
           render={({match}) => {
             const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
-              return <MovieDetails selectedMovie={this.state.selectedMovie}/>
+              return <MovieDetails selectedMovie={this.state.selectedMovie} id={movieToRender.id}/>
             }
           }/>
         <Footer />
