@@ -14,7 +14,7 @@ class App extends Component {
       isClicked: false,
       selectedMovie: {}
     }
-  }
+  }.
   selectedMovie = (id) => {
     const findMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({...this.state.movies, isClicked: true, selectedMovie: findMovie})
