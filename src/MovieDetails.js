@@ -17,6 +17,7 @@ class MovieDetails extends Component {
         .then(data => {
           this.setState({movie: data.movie})
           genre = data.movie.genres.join(', ')
+        //   console.log(new Date(data.movie.release_date))
         })
         .catch(error => {
           this.setState({error: error.message})
@@ -32,7 +33,7 @@ class MovieDetails extends Component {
                 <section>
                     <h1>{this.state.movie.title}</h1>
                     <p>{this.state.movie.overview}</p>
-                    <p>Rating: {this.state.movie.average_rating}</p>
+                    <p>Rating: {Number(this.state.movie.average_rating).toFixed(1)}</p>
                     <p>Genre: {genre} </p>
                     <p>Release Date: {this.state.movie.release_date}</p>
                    <Link to={'/'}>
