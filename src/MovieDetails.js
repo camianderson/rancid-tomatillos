@@ -3,7 +3,7 @@ import './MovieDetails.css'
 import { Link } from 'react-router-dom';
 import { getMovieDetails } from './apiCalls';
 
-
+let genre;
 class MovieDetails extends Component {
     constructor() {
         super()
@@ -16,15 +16,16 @@ class MovieDetails extends Component {
         getMovieDetails(this.props.id)
         .then(data => {
           this.setState({movie: data.movie})
+          genre = data.movie.genres.join(', ')
         })
         .catch(error => {
           this.setState({error: error.message})
         })
-      }
-
+      } 
+    
       
     render() {
-        console.log(this.state.movie.genres)
+        
         return (
             <div className='movie-details'>
                 <img className='movie-image' src={this.state.movie.poster_path}/>
@@ -32,7 +33,7 @@ class MovieDetails extends Component {
                     <h1>{this.state.movie.title}</h1>
                     <p>{this.state.movie.overview}</p>
                     <p>Rating: {this.state.movie.average_rating}</p>
-                    <p>Genre: {this.state.movie.genres}</p>
+                    <p>Genre: {genre} </p>
                     <p>Release Date: {this.state.movie.release_date}</p>
                    <Link to={'/'}>
                    <button>Back</button>
