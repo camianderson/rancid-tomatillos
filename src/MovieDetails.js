@@ -1,49 +1,46 @@
-import React, {Component} from 'react';
-import './MovieDetails.css'
-import { Link } from 'react-router-dom';
-import { getMovieDetails } from './apiCalls';
+import React, { Component } from "react";
+import "./MovieDetails.css";
+import { Link } from "react-router-dom";
+import { getMovieDetails } from "./apiCalls";
 
 let genre;
 class MovieDetails extends Component {
-    constructor() {
-        super()
-        this.state = {
-            movie: ''
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      movie: "",
+    };
+  }
 
-    componentDidMount = () => {
-        getMovieDetails(this.props.id)
-        .then(data => {
-          this.setState({movie: data.movie})
-          genre = data.movie.genres.join(', ')
+  componentDidMount = () => {
+    getMovieDetails(this.props.id)
+      .then((data) => {
+        this.setState({ movie: data.movie });
+        genre = data.movie.genres.join(", ");
         //   console.log(new Date(data.movie.release_date))
-        })
-        .catch(error => {
-          this.setState({error: error.message})
-        })
-      } 
-    
-      
-    render() {
-        
-        return (
-            <div className='movie-details'>
-                <img className='movie-image' src={this.state.movie.poster_path}/>
-                <section>
-                    <h1>{this.state.movie.title}</h1>
-                    <p>{this.state.movie.overview}</p>
-                    <p>Rating: {Number(this.state.movie.average_rating).toFixed(1)}</p>
-                    <p>Genre: {genre} </p>
-                    <p>Release Date: {this.state.movie.release_date}</p>
-                   <Link to={'/'}>
-                   <button>Back</button>
-                   </Link>
-                </section>
-            </div>
-        )
-    }
-    
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  };
+
+  render() {
+    return (
+      <div className="movie-details">
+        <img className="movie-image" src={this.state.movie.poster_path} />
+        <section>
+          <h1>{this.state.movie.title}</h1>
+          <p>{this.state.movie.overview}</p>
+          <p>Rating: {Number(this.state.movie.average_rating).toFixed(1)}</p>
+          <p>Genre: {genre} </p>
+          <p>Release Date: {this.state.movie.release_date}</p>
+          <Link to={"/"}>
+            <button>Back</button>
+          </Link>
+        </section>
+      </div>
+    );
+  }
 }
 
 export default MovieDetails;

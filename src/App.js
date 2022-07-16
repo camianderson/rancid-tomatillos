@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Error from './Error';
 import MovieContainer from './MovieContainer';
 import MovieDetails from './MovieDetails';
 import './App.css';
-import { Route } from 'react-router-dom';
-import {getMovieData }from './apiCalls'
+import { Route, Switch } from 'react-router-dom';
+import {getMovieData }from './apiCalls';
 
 class App extends Component {
   constructor(){
@@ -13,11 +14,9 @@ class App extends Component {
     this.state = { 
       movies: [],
       error:'',
-      isClicked: false,
       selectedMovie: {}
      }
    }
- }
 
   componentDidMount = () => {
     getMovieData()
@@ -31,26 +30,36 @@ class App extends Component {
 
   selectedMovie = (id) => {
     const findMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({...this.state.movies, isClicked: true, selectedMovie: findMovie})
+    this.setState({...this.state.movies, selectedMovie: findMovie})
   }
- 
+
   render(){
     return(
       <main className='App'>
         <Header />
-        { this.state.error && <h2>{this.state.error}</h2>}
-        <Route 
-          exact path='/' 
-          render={() => (
-          <MovieContainer movies={this.state.movies} selectedMovie={this.selectedMovie}/> )}
-        />
-        <Route
-          exact path='/movies/:id'
-          render={({match}) => {
-            const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
-              return <MovieDetails selectedMovie={this.state.selectedMovie} id={movieToRender.id}/>
+        { this.state.error && <h2>{this.state.error}</h2> }
+        <Switch>
+          <Route 
+            exact path='/' 
+            render={() => (
+            <MovieContainer movies={this.state.movies} selectedMovie={this.selectedMovie}/> )}
+          />
+          <Route
+            exact path='/movies/:id'
+            render={({match}) => {
+              const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
+                return <MovieDetails selectedMovie={this.state.selectedMovie} id={movieToRender.id}/>
+              }
             }
-          }/>
+          />
+          <Route 
+            path='*'
+            render={() => {
+              return <Error />
+              }
+            }
+          />
+        </Switch>
         <Footer />
       </main>
      )  
