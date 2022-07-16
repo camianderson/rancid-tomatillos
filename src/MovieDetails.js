@@ -16,7 +16,7 @@ class MovieDetails extends Component {
     getMovieDetails(this.props.id)
       .then((data) => {
         this.setState({ movie: data.movie });
-        genre = data.movie.genres.join(", ");
+        genre = data.movie.genres.join(" | ");
         //   console.log(new Date(data.movie.release_date))
       })
       .catch((error) => {
@@ -26,19 +26,25 @@ class MovieDetails extends Component {
 
   render() {
     return (
-      <div className="movie-details">
-        <img className="movie-image" src={this.state.movie.poster_path} />
-        <section>
-          <h1>{this.state.movie.title}</h1>
-          <p>{this.state.movie.overview}</p>
-          <p>Rating: {Number(this.state.movie.average_rating).toFixed(1)}</p>
-          <p>Genre: {genre} </p>
-          <p>Release Date: {this.state.movie.release_date}</p>
-          <Link to={"/"}>
-            <button>Back</button>
-          </Link>
-        </section>
-      </div>
+      <article className='movie-details-container' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
+        <div className='info-mask'>
+          <div className="movie-details">
+            <img className="movie-image" src={this.state.movie.poster_path} />
+            <section>
+              <div className='description'>
+                <h1>{this.state.movie.title}</h1>
+                <p>{this.state.movie.overview}</p>
+                <p>⭐ : {Number(this.state.movie.average_rating).toFixed(1)}/10</p>
+                <p>Genre: {genre} </p>
+                <p>Release Date: {this.state.movie.release_date}</p>
+                <Link to={"/"}>
+                  <button>Back</button>
+                </Link>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
     );
   }
 }
