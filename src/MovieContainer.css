@@ -2,6 +2,23 @@
     padding: 20px;
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(4, 1fr);
     grid-gap: 35px;
+}
+
+@media only screen and (min-width: 250px) {
+    .movies-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .movies-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .movies-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

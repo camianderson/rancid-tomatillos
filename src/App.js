@@ -15,8 +15,9 @@ class App extends Component {
       error:'',
       isClicked: false,
       selectedMovie: {}
-    }
-  }
+     }
+   }
+ }
 
   componentDidMount = () => {
     getMovieData()
