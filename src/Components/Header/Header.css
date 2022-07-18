@@ -1,0 +1,17 @@
+header {
+  background-color: #670019;
+  color: #cdcdcd;
+  text-shadow: 2px 2px 5px #000000;
+  font-family: 'Karla', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 40px;
+}
+
+.header-img {
+  max-width: 43px;
+  padding: 10px;
+}

@@ -4,7 +4,7 @@ import "./Movie.css";
 
 const Movie = ({ title, img, id, selectedMovie }) => {
   return (
-    <Link to={`/movies/${id}`}>
+    <Link to={`/movies/${id}`} style={{ textDecoration: "none" }}>
       <div className="single-movie" id={id} onClick={() => selectedMovie(id)}>
         <img src={img} />
         <p>{title}</p>
