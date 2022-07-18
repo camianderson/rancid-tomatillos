@@ -1,5 +1,15 @@
 # Rancid Tomatillos
 
+## Table of Contents
+  - [Overview](#overview)
+  - [Technologies](#technologies)
+  - [Contributors](#contributors)
+  - [Set Up](#set-up)
+  - [Illustrations](#illustrations)
+  - [Future Additions and Improvements](#future-additions-and-improvements)
+  - [Project Spec](#project-spec)
+
+
 ## Overview
 
 Rancid Tomatillos is an application that allows a user to browse through a list of movies, click on the movie cards, view movie details, such as movie images, title, overview, description, and ratings.
@@ -13,7 +23,7 @@ Rancid Tomatillos is an application that allows a user to browse through a list 
 - Cypress
 - Fetch API
 
-## Contributer
+## Contributors
 
 - [Lourdes Benites](https://github.com/lourdesbnts)
 
@@ -30,11 +40,12 @@ Rancid Tomatillos is an application that allows a user to browse through a list 
 
 4. Run npm start in the terminal to see the page. You will need to copy and paste the local server from the terminal and paste it into your browser. The local server should be simialiar to, "http://localhost:3000/". Control + C is the command to stop running the local server. Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems.
 
-## Features
+## Illustrations
 
-### Homepage: 
+https://user-images.githubusercontent.com/98124157/179605800-d8defa92-3ec0-424a-9396-b660c8377d27.mp4
 
-### Movie Details: 
+https://user-images.githubusercontent.com/98124157/179605839-6b101834-5dff-43f8-b359-63246bf95beb.mp4
+
 
 ## Future Additions and Improvements
 
@@ -42,7 +53,7 @@ Rancid Tomatillos is an application that allows a user to browse through a list 
 - Add a filter by movie name
 - Add trailer for each movie
 
-## Project Specs
+## Project Spec
 
-Click [here](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html) for project specs, provided by [Turing School of Software and Design](https://turing.edu/)
+Click [here](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html) for project specs, provided by [Turing School of Software and Design](https://turing.edu/).
 
