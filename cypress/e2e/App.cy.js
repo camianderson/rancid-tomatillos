@@ -15,12 +15,10 @@ describe('empty spec', () => {
     cy.get('div[class="single-movie"]').find('img').should('be.visible');
   })
 
-  
   it('should show an error', () => {
     cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
       statusCode: 404,
     })
-
     cy.visit('http://localhost:3000/')
     .contains('Oops, something went wrong!')
   })
