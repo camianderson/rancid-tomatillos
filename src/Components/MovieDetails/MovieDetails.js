@@ -17,7 +17,6 @@ class MovieDetails extends Component {
       .then((data) => {
         this.setState({ movie: data.movie });
         genre = data.movie.genres.join(" | ");
-        //   console.log(new Date(data.movie.release_date))
       })
       .catch((error) => {
         this.setState({ error: error.message });
