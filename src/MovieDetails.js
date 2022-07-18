@@ -29,7 +29,7 @@ class MovieDetails extends Component {
       <article className='movie-details-container' style={{backgroundImage: `url(${this.state.movie.backdrop_path})`}}>
         <div className='info-mask'>
           <div className="movie-details">
-            <img className="movie-image" src={this.state.movie.poster_path} />
+            <img className="movie-image" alt="movie poster" src={this.state.movie.poster_path} />
             <section>
               <div className='description'>
                 <h1>{this.state.movie.title}</h1>
